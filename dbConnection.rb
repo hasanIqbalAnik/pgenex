@@ -1,8 +1,8 @@
 class DbConnection
 
 
-def connect(db, user, pw)
-  PGconn.new('localhost', 5432, '', '', db, user, pw) 
-end	
+def connect(hostname, port, db, user, passwd)
+	PGconn.new(hostname, port, '', '',db, user, passwd) 
+end
 
 end

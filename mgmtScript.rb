@@ -1,30 +1,22 @@
+class Main
+
 require 'pg'
 require_relative 'dbConnection'
 require_relative 'columnManipulation'
-
-class Main
-
-db = 'openbravo'
-user = 'tad'
-passwd = 'tad'
+require_relative 'constraintManipulation'
 
 begin
   db = DbConnection.new
-  conn = db.connect(db, user, passwd)
+  conn = db.connect('localhost','5432','mydb', 'tad', 'tad')
+
   puts "Connected to #{conn.db} at #{conn.host}"
-  sql = "select * from c_bpartner"
-  result = conn.exec(sql)
-  result.each do |row|
-    puts row['name']
-  end
-
+  
 rescue PGError=>e 
-  puts "Eeeeeeeek!", e
+  puts "Shit man! Something is very wrong", e
 ensure
-  conn.close unless conn.nil?
-  puts "Connection closed" 
+  conn.close
+  puts "connection closed"
 end
-
 
 
 end

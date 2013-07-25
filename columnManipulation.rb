@@ -1,21 +1,19 @@
 class ColumnManipulation
 
-def add(tableName, columnName)
-	puts "not implemented yet"
+def add(tableName, columnName, columnDataType)
+	'alter table'+ ' '+tableName+ ' '+'add column'+ ' '+columnName+' '+columnDataType+' not null'+' '+ ';'
 end
 
-def rename
-	puts "not implemented yet"
+def rename(tableName, oldColumnName, newColumnName)
+	'alter table'+ ' '+tableName+ ' '+'rename column'+ ' '+oldColumnName+ ' '+'to'+ ' '+newColumnName+';'
 end
 
-def remove
-	puts "not implemented yet"
+def drop(tableName, columnName)
+	'alter table'+ ' '+tableName+ ' '+'drop column'+ ' '+columnName+ ';'
 end
 
-def changeDataType
-	puts "not implemented yet"
+def changeDataType(tableName,columnName, newDataType)
+	'alter table' + ' '+tableName+ ' '+'alter column'+ ' '+columnName+ ' '+'type'+ ' '+newDataType+' '+'using'+' '+columnName+'::numeric'+';'
 end
-
-
 
 end
