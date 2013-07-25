@@ -4,12 +4,9 @@ require_relative 'columnManipulation'
 
 class Main
 
-
-test('openbravo', 'tad', 'tad')
-
-end
-
-def test(db, user, passwd)
+db = 'openbravo'
+user = 'tad'
+passwd = 'tad'
 
 begin
   db = DbConnection.new
@@ -18,7 +15,7 @@ begin
   sql = "select * from c_bpartner"
   result = conn.exec(sql)
   result.each do |row|
-  	puts row['name']
+    puts row['name']
   end
 
 rescue PGError=>e 
@@ -27,4 +24,9 @@ ensure
   conn.close unless conn.nil?
   puts "Connection closed" 
 end
+
+
+
 end
+
+
