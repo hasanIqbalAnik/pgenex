@@ -9,4 +9,8 @@ def getColumns(tableName)
 	table_name='"+tableName+"';"
 end
 
+def getTableNameLike(nameLike)
+	"SELECT * FROM pg_catalog.pg_tables where tablename LIKE '"+ nameLike+"%' AND schemaname = 'public'" 
+end
+
 end
