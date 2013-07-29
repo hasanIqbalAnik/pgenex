@@ -50,7 +50,25 @@ begin
         puts "operation successful"
       end
   when "2"
-    puts "constraint"
+    questions.constraintQuestions
+    opChoice = gets.chomp
+      case opChoice
+      when "1"
+        params = questions.addPrimaryKey
+        puts constMan.addPrimaryKey(params[0], params[1])
+        conn.exec(constMan.addPrimaryKey(params[0], params[1]))
+        puts "operation successful"
+      when "2"
+        params = questions.addConstraint
+        puts constMan.add(params[0],params[1],params[2], params[3]))
+        conn.exec(constMan.add(params[0],params[1],params[2], params[3]))
+        puts "operation successful"
+      when "3"
+        params = questions.dropConstraint
+        puts constMan.drop(params[0], params[1])
+        conn.exec(constMan.drop(params[0], params[1]))
+        puts "operation successful"
+      end
   when "3"
     puts "tables"
   end
