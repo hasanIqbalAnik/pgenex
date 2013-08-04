@@ -46,6 +46,8 @@ class Questions
         end
 
         def addConstraint
+                puts "enter constraintName"
+                constraintName = gets.chomp
                 puts "enter local table name"
                 localTable = gets.chomp
                 puts "enter foreign table name"
@@ -54,7 +56,7 @@ class Questions
                 localColumn = gets.chomp
                 puts "enter foreign column name"
                 foreignColumn = gets.chomp
-                return localTable, foreignTable, localColumn, foreignColumn
+                return constraintName, localTable, foreignTable, localColumn, foreignColumn
         end
 
         def dropConstraint
@@ -70,7 +72,8 @@ class Questions
                 puts 'enter your choiche'
                 puts '1. column'
                 puts '2. constraint'
-                puts '3. tables'   
+                puts '3. tables' 
+                puts '4. generic sql'  
         end
 
         def columnMainQuestions

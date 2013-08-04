@@ -10,7 +10,7 @@ require_relative 'questions.rb'
 
 begin
   db = DbConnection.new
-  conn = db.connect('localhost','5432','mydb', 'tad', 'tad')
+  conn = db.connect('localhost','5432','openbravo', 'tad', 'tad')
 
   puts "Connected to #{conn.db} at #{conn.host}"
 
@@ -59,10 +59,10 @@ begin
         conn.exec(constMan.addPrimaryKey(params[0], params[1]))
         puts "operation successful"
       when "2"
-        params = questions.addConstraint
-        puts constMan.add(params[0],params[1],params[2], params[3]))
-        conn.exec(constMan.add(params[0],params[1],params[2], params[3]))
-        puts "operation successful"
+         params = questions.addConstraint
+         puts constMan.add(params[0],params[1],params[2], params[3], params[4])
+         conn.exec(constMan.add(params[0],params[1],params[2], params[3], params[4]))
+         puts "operation successful"
       when "3"
         params = questions.dropConstraint
         puts constMan.drop(params[0], params[1])
@@ -71,6 +71,12 @@ begin
       end
   when "3"
     puts "tables"
+  when "4"
+        puts "enter generic sql"
+        sql = gets.chomp
+        conn.exec(sql)
+        puts "operation successful"
+
   end
   
   
@@ -80,11 +86,7 @@ ensure
   conn.close
   puts "connection closed"
 end
-
-
-
 end
-
 
 
 

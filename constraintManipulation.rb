@@ -5,8 +5,8 @@ def addPrimaryKey(tableName, columnName)
     'alter table'+' '+tableName+' '+'add constraint'+' '+tableName+'_key'+' '+'primary key'+' '+'('+columnName+')'+';'
 end
 
-def add(localTable, foreignTable, localColumn, foreignColumn)
-      'alter table'+' '+localTable+' '+'add constraint'+' '+localTable+'_'+foreignTable+'_rel'+' '+
+def add(constraintName, localTable, foreignTable, localColumn, foreignColumn)
+      'alter table'+' '+localTable+' '+'add constraint'+' '+constraintName+' '+
       'foreign key'+' '+'('+localColumn+')'+' '+
       'references'+' '+foreignTable+'('+foreignColumn+')'+' '+
       'match simple'+' '+'on update no action on delete no action'+';'
