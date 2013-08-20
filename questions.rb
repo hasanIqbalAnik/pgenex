@@ -91,4 +91,26 @@ class Questions
             puts '2. add constraint'
             puts '3. drop constraint'
         end
+
+        def tableQuestions
+            puts "You want to?"
+            puts "1. Add table"
+            puts "2. Drop table"
+            puts "3. Rename table"
+            puts "4. Search table"
+        end
+
+        def addTable
+            puts "not implemented"
+        end
+        def dropTable
+            puts "Enter table name"
+            tableName = gets.chomp
+            return tableName
+        end
+        def searchTable
+            puts "Enter partial table name"
+            tableName = gets.chomp
+            return tableName
+        end
 end

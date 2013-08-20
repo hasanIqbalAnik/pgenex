@@ -6,6 +6,7 @@ require_relative 'columnManipulation'
 require_relative 'constraintManipulation'
 require_relative 'getTablesNColumns'
 require_relative 'questions.rb'
+require_relative 'tableManipulation.rb'
 
 
 begin
@@ -17,6 +18,7 @@ begin
   tabsNCols = GetTablesNColumns.new
   colMan = ColumnManipulation.new
   constMan = ConstraintManipulation.new
+  tabMan = TableManipulation.new
   questions = Questions.new
 
   questions.startingQuestions
@@ -70,7 +72,27 @@ begin
         puts "operation successful"
       end
   when "3"
-    puts "tables"
+        questions.tableQuestions
+        opChoice = gets.chomp
+        case opChoice
+        when "1" #add table
+          puts "not implemented yet"
+        when "2" #drop table
+          params = questions.dropTable
+          puts tabMan.drop(params)
+          conn.exec(tabMan.drop(params))
+          puts "operation successful"
+        when "3" #search table 
+          params = questions.searchTable
+          puts tabMan.search(params)
+          #conn.exec(tabMan.search(params[0]))
+          puts "operation successful"
+        when "4" #rename table
+          params = questions.renameTable
+          puts tabMan.rename
+        end
+
+
   when "4"
         puts "enter generic sql"
         sql = gets.chomp
