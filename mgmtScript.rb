@@ -2,24 +2,33 @@ class Main
 
 require 'pg'
 require_relative 'dbConnection'
-require_relative 'columnManipulation'
-require_relative 'constraintManipulation'
-require_relative 'getTablesNColumns'
+require_relative 'Columns/columnManipulation'
+require_relative 'Columns/columnQuestions'
+
+require_relative 'Constraints/constraintManipulation'
+require_relative 'Constraints/constraintQuestions'
+#require_relative 'getTablesNColumns'
 require_relative 'questions.rb'
-require_relative 'tableManipulation.rb'
+
+require_relative 'Tables/tableManipulation'
+require_relative 'Tables/tableQuestions'
 
 
 begin
   db = DbConnection.new
-  conn = db.connect('localhost','5432','openbravo', 'tad', 'tad')
+  conn = db.connect('localhost','5432','mydb', 'tad', 'tad')
 
   puts "Connected to #{conn.db} at #{conn.host}"
 
-  tabsNCols = GetTablesNColumns.new
+  #tabsNCols = GetTablesNColumns.new
   colMan = ColumnManipulation.new
   constMan = ConstraintManipulation.new
   tabMan = TableManipulation.new
   questions = Questions.new
+
+  columnQuestions = ColumnQuestions.new
+  constraintQuestions = ConstraintQuestions.new
+  tableQuestions = TableQuestions.new
 
   questions.startingQuestions
   
@@ -27,68 +36,68 @@ begin
 
   case choiche
   when "1"
-    questions.columnMainQuestions
+    columnQuestions.columnMainQuestions
     opChoice = gets.chomp
       case opChoice
       when "1"
-        params = questions.addColumn
+        params = columnQuestions.addColumn
         puts colMan.add(params[0],params[1],params[2])
         conn.exec(colMan.add(params[0],params[1],params[2]))
         puts "operation successful"
       when "2"
-        params  = questions.renameColumn
+        params  = columnQuestions.renameColumn
         puts colMan.rename(params[0],params[1],params[2])
         conn.exec(colMan.rename(params[0],params[1],params[2]))
         puts "operation successful"
       when "3"
-        params = questions.dropColumn
+        params = columnQuestions.dropColumn
         puts colMan.drop(params[0],params[1])
         conn.exec(colMan.drop(params[0],params[1]))
         puts "operation successful"
       when "4"
-        params = questions.changeColumnDataType
-        puts colMan.rename(params[0],params[1],params[2])
-        conn.exec(colMan.rename(params[0],params[1],params[2]))
+        params = columnQuestions.changeColumnDataType
+        puts colMan.changeDataType(params[0],params[1],params[2])
+        conn.exec(colMan.changeDataType(params[0],params[1],params[2]))
         puts "operation successful"
       end
   when "2"
-    questions.constraintQuestions
+    constraintQuestions.constraintMainQuestions
     opChoice = gets.chomp
       case opChoice
       when "1"
-        params = questions.addPrimaryKey
+        params = constraintQuestions.addPrimaryKey
         puts constMan.addPrimaryKey(params[0], params[1])
         conn.exec(constMan.addPrimaryKey(params[0], params[1]))
         puts "operation successful"
       when "2"
-         params = questions.addConstraint
+         params = constraintQuestions.addConstraint
          puts constMan.add(params[0],params[1],params[2], params[3], params[4])
          conn.exec(constMan.add(params[0],params[1],params[2], params[3], params[4]))
          puts "operation successful"
       when "3"
-        params = questions.dropConstraint
+        params = constraintQuestions.dropConstraint
         puts constMan.drop(params[0], params[1])
         conn.exec(constMan.drop(params[0], params[1]))
         puts "operation successful"
       end
   when "3"
-        questions.tableQuestions
+        tableQuestions.tableMainQuestions
         opChoice = gets.chomp
         case opChoice
         when "1" #add table
           puts "not implemented yet"
-        when "2" #drop table
-          params = questions.dropTable
+       when "2" #drop table
+          params = tableQuestions.dropTable
           puts tabMan.drop(params)
           conn.exec(tabMan.drop(params))
           puts "operation successful"
-        when "3" #search table 
-          params = questions.searchTable
+       when "3" #search table 
+          params = tableQuestions.searchTable
           puts tabMan.search(params)
           #conn.exec(tabMan.search(params[0]))
           puts "operation successful"
         when "4" #rename table
-          params = questions.renameTable
+          params = tableQuestions.renameTable
           puts tabMan.rename
         end
 

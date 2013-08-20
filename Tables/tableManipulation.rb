@@ -9,4 +9,8 @@ class TableManipulation
 	def search(tableNamePartial)
 		"SELECT tablename FROM pg_tables where tablename like"+" '%"+tableNamePartial+"%';"
 	end
+
+	def dumpSqls(tableNameStartsWith)
+		
+	end
 end
