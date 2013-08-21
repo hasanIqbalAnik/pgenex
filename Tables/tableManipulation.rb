@@ -10,7 +10,9 @@ class TableManipulation
 		"SELECT tablename FROM pg_tables where tablename like"+" '%"+tableNamePartial+"%';"
 	end
 
-	def dumpSqls(tableNameStartsWith)
-		
+	def dumpFilesStartingWith(tablePrefix)
+		puts "not implemented yet"
 	end
+
+
 end

@@ -21,4 +21,9 @@ class TableQuestions
             tableName = gets.chomp
             return tableName
         end
+        def dumpFilesStartingWith
+            puts "enter prefix for tables"
+            tablePrefix = gets.chomp
+            return tablePrefix
+        end
 end

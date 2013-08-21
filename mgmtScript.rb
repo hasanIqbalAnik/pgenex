@@ -99,7 +99,12 @@ begin
         when "4" #rename table
           params = tableQuestions.renameTable
           puts tabMan.rename
+        when "5"
+          params = tableQuestions.dumpFilesStartingWith
+          puts tabMan.dumpFilesStartingWith(params)
+          puts "operation successful"
         end
+
 
 
   when "4"
