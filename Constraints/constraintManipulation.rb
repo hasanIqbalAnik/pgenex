@@ -17,4 +17,7 @@ def drop(tableName, constraintName)
 	'alter table'+' '+tableName+' '+'drop constraint'+' '+constraintName+';'
 end
 
+def addCheckConstraint(tableName)
+	'alter table'+' '+tableName+' '+'add constraint'+' '+tableName+'_actv_chk'+' '+"CHECK (isactive = ANY (ARRAY['Y'::bpchar, 'N'::bpchar]))"
+end
 end

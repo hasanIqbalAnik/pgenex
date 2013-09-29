@@ -1,5 +1,5 @@
 class ColumnQuestions
-		def addColumn
+	def addColumn
         	puts "enter table name"
                 tableName = gets.chomp
                 puts "enter column name"
@@ -18,16 +18,16 @@ class ColumnQuestions
                 newColumnName = gets.chomp
                 return tableName, oldColumnName, newColumnName
 	end
-        def dropColumn
+    def dropColumn
                 puts "enter table name"
                 tableName = gets.chomp
                 puts "enter columnName"
                 columnName = gets.chomp
                 return tableName, columnName
 
-        end
+    end
 
-        def changeColumnDataType
+    def changeColumnDataType
                 puts "enter table name"
                 tableName = gets.chomp
                 puts "enter column name"
@@ -35,15 +35,15 @@ class ColumnQuestions
                 puts "enter new data type"
                 dataType = gets.chomp
                 return tableName, columnName, dataType
-        end
+    end
 
-        def columnMainQuestions
+    def columnMainQuestions
             puts "You want to?"
             puts 'enter your choiche'
             puts '1. add column'
             puts '2. rename'
             puts '3. drop'
             puts '4. change data type'
-        end
+    end
 
 end

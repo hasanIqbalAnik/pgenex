@@ -6,6 +6,7 @@ class Questions
                 puts '2. constraint'
                 puts '3. tables' 
                 puts '4. generic sql'  
+                puts '5. Various tasks'
         end
 
-    end
+ end

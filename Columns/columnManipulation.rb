@@ -1,7 +1,7 @@
 class ColumnManipulation
 
 def add(tableName, columnName, columnDataType)
-	'alter table'+ ' '+tableName+ ' '+'add column'+ ' '+columnName+' '+columnDataType+' not null'+' '+ ';'
+	'alter table'+ ' '+tableName+ ' '+'add column'+ ' '+columnName+' '+columnDataType+' '+' '+ ';'
 end
 
 def rename(tableName, oldColumnName, newColumnName)
